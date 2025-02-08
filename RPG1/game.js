@@ -1,12 +1,75 @@
-// 敵データ（画像付き）
-const enemies = [
-  { name: "スライム", hp: 10, attack: 3, exp: 5, drop: "スライムのゼリー", img: "img/enemies/slime.png" },
-  { name: "ゴブリン", hp: 15, attack: 5, exp: 8, drop: "ゴブリンの牙", img: "img/enemies/goblin.png" },
-  { name: "オオカミ", hp: 20, attack: 7, exp: 12, drop: "オオカミの毛皮", img: "img/enemies/wolf.png" }
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+// マップデータ（0: 草原, 1: 壁）
+const map = [
+  [1,1,1,1,1,1,1,1,1,1],
+  [1,0,0,0,0,0,0,0,0,1],
+  [1,0,1,1,0,0,1,1,0,1],
+  [1,0,1,0,0,0,0,1,0,1],
+  [1,0,0,0,1,1,0,0,0,1],
+  [1,0,1,0,0,0,0,1,0,1],
+  [1,0,1,1,0,0,1,1,0,1],
+  [1,0,0,0,0,0,0,0,0,1],
+  [1,1,1,1,1,1,1,1,1,1]
 ];
 
-let player = { hp: 30, level: 1, exp: 0, inventory: [] };
-let currentEnemies = [];
+const tileSize = 32; // 1マスのサイズ
+const player = { x: 1, y: 1, color: "blue", speed: 1 };
+
+// ゲーム開始処理
+document.getElementById("startButton").addEventListener("click", function() {
+  document.getElementById("titleScreen").classList.add("fade-out");
+  setTimeout(() => {
+    document.getElementById("titleScreen").style.display = "none";
+    canvas.style.display = "block"; // フィールド画面を表示
+    draw();
+  }, 1000);
+});
+
+// キー入力
+document.addEventListener("keydown", (e) => {
+  let newX = player.x;
+  let newY = player.y;
+  
+  if (e.key === "ArrowUp") newY--;
+  if (e.key === "ArrowDown") newY++;
+  if (e.key === "ArrowLeft") newX--;
+  if (e.key === "ArrowRight") newX++;
+
+  // 壁でなければ移動
+  if (map[newY][newX] === 0) {
+    player.x = newX;
+    player.y = newY;
+  }
+
+  draw();
+
+  // 20%の確率でエンカウント（戦闘開始）
+  if (Math.random() < 0.2) {
+    startBattle();
+  }
+});
+
+// マップ & プレイヤー描画
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let y = 0; y < map.length; y++) {
+    for (let x = 0; x < map[y].length; x++) {
+      ctx.fillStyle = map[y][x] === 1 ? "gray" : "lightgreen";
+      ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
+    }
+  }
+  ctx.fillStyle = player.color;
+  ctx.fillRect(player.x * tileSize, player.y * tileSize, tileSize, tileSize);
+}
+
+// 戦闘開始
+function startBattle() {
+  canvas.style.display = "none"; // フィールドを隠す
+  document.getElementById("battleScene").style.display = "block"; // 戦闘画面を表示
+  showMessages(["敵が現れた！"]);
+}
 
 // メッセージを順番に表示
 function showMessages(messages, callback) {
@@ -29,95 +92,4 @@ function showMessages(messages, callback) {
   }
 
   typeMessage();
-}
-
-// 戦闘開始
-function startBattle() {
-  document.getElementById("battleUI").style.display = "block";
-  document.getElementById("battleScene").style.display = "block";
-  document.getElementById("enemyContainer").innerHTML = "";
-  currentEnemies = [];
-
-  let enemyCount = Math.floor(Math.random() * 3) + 1;
-  for (let i = 0; i < enemyCount; i++) {
-    let enemy = { ...enemies[Math.floor(Math.random() * enemies.length)] };
-    enemy.hp = enemy.hp;
-    currentEnemies.push(enemy);
-
-    let enemyImg = document.createElement("img");
-    enemyImg.src = enemy.img;
-    enemyImg.classList.add("enemy");
-    enemyImg.dataset.index = i;
-    document.getElementById("enemyContainer").appendChild(enemyImg);
-  }
-
-  let enemyNames = currentEnemies.map(e => e.name).join(" と ");
-  showMessages([`${enemyNames}があらわれた！`]);
-}
-
-// クリックで攻撃
-document.getElementById("enemyContainer").addEventListener("click", function(event) {
-  let index = event.target.dataset.index;
-  if (index !== undefined) {
-    playerAttack(parseInt(index));
-  }
-});
-
-// 攻撃
-function playerAttack(index) {
-  let damage = Math.floor(Math.random() * 5) + 3;
-  currentEnemies[index].hp -= damage;
-  flashEnemy(index);
-
-  showMessages([
-    `主人公の攻撃！`,
-    `${currentEnemies[index].name}に${damage}のダメージ！`
-  ], function() {
-    if (currentEnemies[index].hp <= 0) {
-      showMessages([`${currentEnemies[index].name}を倒した！`], function() {
-        currentEnemies.splice(index, 1);
-        document.getElementById("enemyContainer").children[index].remove();
-        if (currentEnemies.length === 0) {
-          endBattle();
-        } else {
-          enemyTurn();
-        }
-      });
-    } else {
-      enemyTurn();
-    }
-  });
-}
-
-// 敵の攻撃
-function enemyTurn() {
-  let enemyIndex = Math.floor(Math.random() * currentEnemies.length);
-  let enemy = currentEnemies[enemyIndex];
-  let damage = Math.floor(Math.random() * enemy.attack) + 1;
-
-  player.hp -= damage;
-  
-  showMessages([
-    `${enemy.name}の攻撃！`,
-    `主人公に${damage}のダメージ！`
-  ], function() {
-    if (player.hp <= 0) {
-      showMessages(["主人公は倒れた..."], gameOver);
-    } else {
-      showMessage("どうする？");
-    }
-  });
-}
-
-// 戦闘終了
-function endBattle() {
-  document.getElementById("battleUI").style.display = "none";
-  showMessages(["戦闘に勝利した！"]);
-}
-
-// 敵の攻撃エフェクト
-function flashEnemy(index) {
-  let enemyImg = document.querySelector(`#enemyContainer img:nth-child(${index + 1})`);
-  enemyImg.style.opacity = "0.5";
-  setTimeout(() => enemyImg.style.opacity = "1", 200);
 }
