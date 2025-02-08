@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #222;
+  color: white;
+  text-align: center;
+}
+
+/* 戦闘画面 */
+#battleScene {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 200px;
+  background: lightblue;
+  border: 2px solid black;
+  text-align: center;
+}
+
+#enemyContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.enemy {
+  width: 64px;
+  height: 64px;
+  margin: 10px;
+  transition: opacity 0.2s;
+}
+
+/* メッセージウィンドウ */
+#messageBox {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 300px;
+  height: 80px;
+  background: black;
+  color: white;
+  border: 2px solid white;
+  padding: 10px;
+  font-size: 16px;
+  display: none;
+}
+
+/* 戦闘UI */
+#battleUI {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  width: 300px;
+  height: 120px;
+  background: black;
+  color: white;
+  border: 2px solid white;
+  padding: 10px;
+  display: none;
+}
+
+#battleUI button {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  font-size: 16px;
+}
