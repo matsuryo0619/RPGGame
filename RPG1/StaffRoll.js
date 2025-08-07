@@ -30,6 +30,11 @@ GitHub Pages
 `;
 
 export function Staffroll() {
-  // 中央揃えならxを canvas.width / 2 にするべし！
-  ctx.fillTextOptions(Text, canvas.width / 2, 40, 'black', '25px', 'sans-serif', 'center', 'top');
+  if (typeof Staffroll.scrollY === 'undefined') {
+    Staffroll.scrollY = canvas.height;
+  }
+
+  ctx.fillTextOptions(Text, canvas.width / 2, Staffroll.scrollY, 'black', '25px', 'sans-serif', 'center', 'top');
+
+  Staffroll.scrollY -= 1;
 }
