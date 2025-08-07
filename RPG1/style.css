@@ -7,7 +7,7 @@ html, body {
 }
 
 #gameWindow {
-  height: 70vw;
+  height: 70vh;
   aspect-ratio: 1/1;
   border: 5px solid black;
 }
