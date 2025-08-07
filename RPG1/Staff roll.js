@@ -26,8 +26,7 @@ GitHub
 GitHub Pages
 `;
 
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-ctx.fillRectColor(0, 0, canvas.width, canvas.height, 'white');
-
-// 中央揃えならxを canvas.width / 2 にするべし！
-ctx.fillTextOptions(Text, canvas.width / 2, 40, 'black', '16px', 'sans-serif', 'center', 'top');
+export function Staffroll() {
+  // 中央揃えならxを canvas.width / 2 にするべし！
+  ctx.fillTextOptions(Text, canvas.width / 2, 40, 'black', '16px', 'sans-serif', 'center', 'top');
+}
