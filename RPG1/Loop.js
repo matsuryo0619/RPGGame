@@ -11,9 +11,6 @@ function loop() {
     case 'StaffRoll':
       Staffroll();
       break;
-    default: 
-      State.currentScreen = 'StaffRoll'
-      break;
   };
 }
 
