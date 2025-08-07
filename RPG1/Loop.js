@@ -1,7 +1,7 @@
 import { ctx, canvas } from 'imports.js';
 import { Staffroll } from 'Staff roll.js';
 
-let currentScreen;
+let currentScreen = 'Staffroll';
 
 function loop() {
   requestAnimationFrame(loop);
@@ -11,8 +11,6 @@ function loop() {
 
   if (currentScreen === 'Staffroll') {
     Staffroll();
-  } else {
-    currentScreen = 'Staffroll';
   }
 }
 
