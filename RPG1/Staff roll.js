@@ -1,4 +1,4 @@
-import { ctx } from './imports.js';
+import { ctx, canvas } from './imports.js'; // canvasもexportしておこう！
 
 const Text = `
 スタッフロール
@@ -26,4 +26,8 @@ GitHub
 GitHub Pages
 `;
 
-ctx.fillTextOptions(Text, 0, 0, 'black', '16px', 'sans-serif', 'center', 'top', );
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+ctx.fillRectColor(0, 0, canvas.width, canvas.height, 'white');
+
+// 中央揃えならxを canvas.width / 2 にするべし！
+ctx.fillTextOptions(Text, canvas.width / 2, 40, 'black', '16px', 'sans-serif', 'center', 'top');
