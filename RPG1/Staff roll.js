@@ -1,3 +1,5 @@
+import { ctx } from './imports.js';
+
 const Text = `
 スタッフロール
 
