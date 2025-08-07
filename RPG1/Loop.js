@@ -1,7 +1,5 @@
-import { ctx, canvas } from './imports.js';
+import { ctx, canvas, State } from './imports.js';
 import { Staffroll } from './StaffRoll.js';
-
-let currentScreen = 'Staffroll';
 
 function loop() {
   requestAnimationFrame(loop);
@@ -9,7 +7,7 @@ function loop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillRectColor(0, 0, canvas.width, canvas.height, 'white');
 
-  if (currentScreen === 'Staffroll') {
+  if (State.currentScreen === 'Staffroll') {
     Staffroll();
   }
 }
