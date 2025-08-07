@@ -1,5 +1,5 @@
 import { ctx, canvas } from 'imports.js';
-import { Staffroll } from 'Staff roll.js';
+import { Staffroll } from 'StaffRoll.js';
 
 let currentScreen = 'Staffroll';
 
