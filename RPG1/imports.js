@@ -37,3 +37,7 @@ canvas.style.width = `${size}px`;
 canvas.style.height = `${size}px`;
 
 export const ctx = canvas.getContext('2d');
+
+export const State = {
+  currentScreen: 'StaffRoll'
+};
