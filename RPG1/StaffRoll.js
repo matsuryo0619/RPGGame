@@ -31,5 +31,5 @@ GitHub Pages
 
 export function Staffroll() {
   // 中央揃えならxを canvas.width / 2 にするべし！
-  ctx.fillTextOptions(Text, canvas.width / 2, 40, 'black', '16px', 'sans-serif', 'center', 'top');
+  ctx.fillTextOptions(Text, canvas.width / 2, 40, 'black', '25px', 'sans-serif', 'center', 'top');
 }
