@@ -6,16 +6,22 @@ CanvasRenderingContext2D.prototype.fillRectColor = function(x, y, w, h, c) {
 
 CanvasRenderingContext2D.prototype.fillTextOptions = function(
   text, x, y,
-  color = '#000', size = '16px', font = 'sans-serif',
-  align = 'left', baseline = 'alphabetic',
+  color = '#000',
+  size = '16px',
+  font = 'sans-serif',
+  align = 'left',
+  baseline = 'alphabetic',
   lineHeight = null
 ) {
-  this.font = `${size} ${font}`;
+  // sizeが数値ならpx付ける
+  const fontSize = typeof size === 'number' ? `${size}px` : size;
+
+  this.font = `${fontSize} ${font}`;
   this.fillStyle = color;
   this.textAlign = align;
   this.textBaseline = baseline;
 
-  const lh = lineHeight || parseInt(size) * 1.4;
+  const lh = lineHeight || parseInt(fontSize) * 1.2;
 
   const lines = text.split('\n');
   for (let i = 0; i < lines.length; i++) {
