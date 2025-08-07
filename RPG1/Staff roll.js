@@ -26,4 +26,4 @@ GitHub
 GitHub Pages
 `;
 
-ctx.fillTextOptions(Text, 0, 0, black, '16px', 'sans-serif', 'center', 'top', );
+ctx.fillTextOptions(Text, 0, 0, 'black', '16px', 'sans-serif', 'center', 'top', );
