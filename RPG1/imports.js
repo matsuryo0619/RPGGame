@@ -15,14 +15,13 @@ CanvasRenderingContext2D.prototype.fillTextOptions = function(
   this.textAlign = align;
   this.textBaseline = baseline;
 
-  const lh = lineHeight || parseInt(size) * 1.2; // 自動でlineHeight決定
+  const lh = lineHeight || parseInt(size) * 1.4;
 
   const lines = text.split('\n');
   for (let i = 0; i < lines.length; i++) {
     this.fillText(lines[i], x, y + i * lh);
   }
 };
-
 
 const canvas = document.getElementById('gameWindow');
 export const ctx = canvas.getContext('2d');
