@@ -14,6 +14,6 @@ function loop() {
   } else {
     currentScreen = 'Staffroll';
   }
-]
+}
 
 loop();
