@@ -7,14 +7,22 @@ CanvasRenderingContext2D.prototype.fillRectColor = function(x, y, w, h, c) {
 CanvasRenderingContext2D.prototype.fillTextOptions = function(
   text, x, y,
   color = '#000', size = '16px', font = 'sans-serif',
-  align = 'left', baseline = 'alphabetic'
+  align = 'left', baseline = 'alphabetic',
+  lineHeight = null
 ) {
   this.font = `${size} ${font}`;
   this.fillStyle = color;
   this.textAlign = align;
   this.textBaseline = baseline;
-  this.fillText(text, x, y);
+
+  const lh = lineHeight || parseInt(size) * 1.2; // 自動でlineHeight決定
+
+  const lines = text.split('\n');
+  for (let i = 0; i < lines.length; i++) {
+    this.fillText(lines[i], x, y + i * lh);
+  }
 };
+
 
 const canvas = document.getElementById('gameWindow');
 export const ctx = canvas.getContext('2d');
