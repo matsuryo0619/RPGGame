@@ -14,7 +14,7 @@ function loop() {
     default: 
       State.currentScreen = 'StaffRoll'
       break;
-  });
+  };
 }
 
 loop();
