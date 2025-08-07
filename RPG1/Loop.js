@@ -7,9 +7,14 @@ function loop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillRectColor(0, 0, canvas.width, canvas.height, 'white');
 
-  if (State.currentScreen === 'Staffroll') {
-    Staffroll();
-  }
+  switch (State.currentScreen) {
+    case 'StaffRoll':
+      Staffroll();
+      break;
+    default: 
+      State.currentScreen = 'StaffRoll'
+      break;
+  });
 }
 
 loop();
