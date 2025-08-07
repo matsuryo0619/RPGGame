@@ -30,4 +30,10 @@ CanvasRenderingContext2D.prototype.fillTextOptions = function(
 };
 
 export const canvas = document.getElementById('gameWindow');
+const size = window.innerHeight * 0.7; // 70vhくらい
+canvas.width = size;
+canvas.height = size;
+canvas.style.width = `${size}px`;
+canvas.style.height = `${size}px`;
+
 export const ctx = canvas.getContext('2d');
