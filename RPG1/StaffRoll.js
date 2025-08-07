@@ -1,4 +1,4 @@
-import { ctx, canvas } from './imports.js'; // canvasもexportしておこう！
+import { ctx, canvas, State } from './imports.js'; // canvasもexportしておこう！
 
 const Text = `
 スタッフロール
@@ -39,6 +39,6 @@ export function Staffroll() {
   Staffroll.scrollY -= 1;
 
   if (Staffroll.scrollY < -800) {
-
+    State.currentScreen = 'title';
   }
 }
