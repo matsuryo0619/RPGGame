@@ -1,13 +1,17 @@
 html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  background-color: #eee; /* 任意で背景色 */
 }
 
 #gameWindow {
-  height: 70vh;
-  aspect-ratio: 1/1;
   border: 5px solid black;
+  /* 幅・高さはJS側で設定するのでCSSでは指定しない */
+  display: block; /* canvasはinline要素だからこれでブロック化 */
+  box-sizing: border-box;
 }
