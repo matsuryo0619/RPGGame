@@ -44,6 +44,6 @@ export const State = {
 
   ChangeScreen(next) {
     this.nextScreen = next;
-    this.currentScreen = 'transiction';
+    this.currentScreen = 'transition';
   }
 };
