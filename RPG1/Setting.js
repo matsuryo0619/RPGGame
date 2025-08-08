@@ -25,11 +25,12 @@ export function setting() {
       ['ま','み','む','め','も'],
       ['や','', 'ゆ', '', 'よ'], // 空白は調整用
       ['ら','り','る','れ','ろ'],
-      ['わ','', 'を', '', 'ん']
+      ['わ','', 'を', '', 'ん'],
+      ['☒','','','','','']
     ];
 
-    const btnWidth = 40;
-    const btnHeight = 40;
+    const btnWidth = 30;
+    const btnHeight = 30;
     const padding = 10;
     const fontSize = btnHeight * 0.7;
 
