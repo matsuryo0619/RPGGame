@@ -1,6 +1,7 @@
 import { ctx, canvas, State } from './imports.js';
 import { Staffroll } from './StaffRoll.js';
 import { transition } from './transition.js';
+import { title } from './title.js';
 
 function loop() {
   requestAnimationFrame(loop);
@@ -9,11 +10,14 @@ function loop() {
   ctx.fillRectColor(0, 0, canvas.width, canvas.height, 'white');
 
   switch (State.currentScreen) {
+    case 'transition':
+      transition();
+      break;
     case 'StaffRoll':
       Staffroll();
       break;
-    case 'transition':
-      transition();
+    case 'title':
+      title();
       break;
   };
 }
