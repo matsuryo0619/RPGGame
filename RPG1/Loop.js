@@ -1,10 +1,7 @@
-import { ctx, canvas, State } from './imports.js';
+import { ctx, canvas, State, Width, Height } from './imports.js';
 import { Staffroll } from './StaffRoll.js';
 import { transition } from './transition.js';
 import { title } from './title.js';
-
-const Width = canvas.width;
-const Height = canvas.height
 
 function loop() {
   requestAnimationFrame(loop);
