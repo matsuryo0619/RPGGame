@@ -10,7 +10,7 @@ export function title() {
 
   title.BackHeight += 5;
 
-  if (175 <= BackHeight) {
+  if (175 <= title.BackHeight) {
     title.BackHeight = 175;
     ctx.globalAlpha = 1;
   }
