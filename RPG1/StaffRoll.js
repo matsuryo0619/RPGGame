@@ -42,7 +42,7 @@ export function Staffroll() {
 
   ctx.fillTextOptions(Text, canvas.width / 2, Staffroll.scrollY, 'black', '25px', 'sans-serif', 'center', 'top');
 
-  Staffroll.scrollY -= 1 + keys['Space']  * 4;
+  Staffroll.scrollY -= 1 + (keys['Space'] ? 4 : 0);
 
   if (Staffroll.scrollY < -1000) {
     State.ChangeScreen('title');
