@@ -9,6 +9,18 @@ const btns = [
     action: () => {
       State.ChangeScreen('Setting');
     }
+  },
+  {
+    text: "途中から",
+    action: () => {
+      State.ChangeScreen('FileLoad');
+    }
+  },
+  {
+    text: '設定',
+    action: () => {
+      State.ChangeScreen('OPSetting');
+    }
   }
 ];
 
@@ -30,7 +42,12 @@ export function title() {
   if (174 <= title.BackHeight) {
     title.BackHeight = 175;
     btns.forEach((btn, i) => {
+      const X = Width / 2;
+      const Y = Height / 2 + 50 + i * 10;
 
+      ctx.fillRoundedRect(X, Y, 150, 50, 10, '#444');
+
+      ctx.fillTextOptions(btn.text, X, Y, 'white', 20, 'sans-serif', 'center', 'middle');
     });
   }
 }
