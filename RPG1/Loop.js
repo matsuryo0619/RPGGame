@@ -12,6 +12,9 @@ function loop() {
     case 'StaffRoll':
       Staffroll();
       break;
+    case 'transition':
+      transition();
+      break;
   };
 }
 
