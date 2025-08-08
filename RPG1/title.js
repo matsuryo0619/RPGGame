@@ -1,5 +1,11 @@
-import { ctx, canvas, State, keys } from './imports.js';
+import { ctx, canvas, Width, Height, State, keys } from './imports.js';
 
 export function title() {
-  State.ChangeScreen('Setting');
+  if (typeof title.BackHeight !== 'number') {
+    title.BackHeight = 0;
+  }
+  
+  ctx.fillRectColor(Width / 2, Height / 2 + 50, 100, title.BackHeight);
+
+  title.BackHeight += 5;
 }
