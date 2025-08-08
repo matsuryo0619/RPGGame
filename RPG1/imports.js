@@ -38,6 +38,9 @@ canvas.style.height = `${size}px`;
 
 export const ctx = canvas.getContext('2d');
 
+export const Width = canvas.width;
+export const Height = canvas.height;
+
 export const State = {
   currentScreen: 'StaffRoll',
   nextScreen: null,
