@@ -46,11 +46,9 @@ export function title() {
     btns.forEach((btn, i) => {
       const X = Width / 2;
       const Y = Height / 2 + 50 + i * 50;
+      const isSelected = SelectedBtn === i;
 
-      if (SelectedBtn === i) {
-        ctx.fillRoundedRect(X, Y, 150, 40, 10, '#cccccc');
-      }
-      ctx.fillRoundedRect(X, Y, 150, 40, 10, '#444');
+      ctx.fillRoundedRect(X, Y, 150, isSelected ? 45 : 40, isSelected ? 15 : 10, isSelected ? '#cccccc' : '#444');
       ctx.fillTextOptions(btn.text, X, Y, 'white', 20, 'sans-serif', 'center', 'middle');
     });
   }
