@@ -61,7 +61,7 @@ export function setting() {
       } while (!columns[setting.SelectedX][setting.SelectedY]);
     }
 
-    if (keys[' '] && !setting.prevKeys[' ']) {
+    if (keys['Space'] && !setting.prevKeys['Space']) {
       const char = columns[setting.SelectedX][setting.SelectedY];
       if (char) setting.InputName += char;
     }
