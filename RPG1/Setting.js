@@ -64,7 +64,13 @@ export function setting() {
 
     if (keys['Space'] && !setting.prevKeys['Space']) {
       const char = columns[setting.SelectedX][setting.SelectedY];
-      if (char) setting.InputName += char;
+      if (char === '☒') {
+        // バックスペース処理
+        setting.InputName = setting.InputName.slice(0, -1);
+      } else if (char) {
+        // 普通の文字追加
+        setting.InputName += char;
+      }
     }
 
     setting.prevKeys = { ...keys };
