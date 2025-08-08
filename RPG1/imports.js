@@ -1,7 +1,7 @@
 CanvasRenderingContext2D.prototype.fillRectColor = function(x, y, w, h, c) {
   const ctx = this;
   ctx.fillStyle = c;
-  ctx.fillRect(x, y, w, h);
+  ctx.fillRect(x - w / 2, y - h / 2, w, h);
 };
 
 CanvasRenderingContext2D.prototype.fillTextOptions = function(
