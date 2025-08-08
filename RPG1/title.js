@@ -6,7 +6,7 @@ titleImage.src = 'https://i.imgur.com/e0qKLwV.png';
 export function title() {
   if (!titleImage.complete) return;
 
-  ctx.drawImage(titleImage, Width / 2 - titleImage.width / 2, 50);
+  ctx.drawImage(titleImage, Width / 2 - titleImage.width / 2, 100);
 
   if (typeof title.BackHeight !== 'number') {
     title.BackHeight = 0;
