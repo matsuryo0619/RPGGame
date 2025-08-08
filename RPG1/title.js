@@ -9,7 +9,7 @@ export function title() {
   ctx.fillRoundedRect(Width / 2, Height / 2 + 100, 200, title.BackHeight, 20, 'black');
   ctx.globalAlpha = 1;
   
-  title.BackHeight += (175 - title.BackHeight) / 5;
+  title.BackHeight += (175 - title.BackHeight) / 15;
 
   if (175 <= title.BackHeight) {
     title.BackHeight = 175;
