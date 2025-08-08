@@ -1,4 +1,4 @@
-import { ctx, canvas, State } from './imports.js'
+import { ctx, canvas, State, Width, Height } from './imports.js'
 
 export function transition() {
   if (typeof transition.alpha !== 'number') {
