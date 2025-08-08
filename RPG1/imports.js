@@ -54,6 +54,7 @@ export const keys = {};
 
 window.addEventListener('keydown', (e) => {
   keys[e.code] = true;
+  console.log(keys);
 });
 
 window.addEventListener('keyup', (e) => {
