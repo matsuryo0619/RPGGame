@@ -43,9 +43,9 @@ export function title() {
     title.BackHeight = 175;
     btns.forEach((btn, i) => {
       const X = Width / 2;
-      const Y = Height / 2 + 50 + i * 10;
+      const Y = Height / 2 + 50 + i * 50;
 
-      ctx.fillRoundedRect(X, Y, 150, 50, 10, '#444');
+      ctx.fillRoundedRect(X, Y, 150, 40, 10, '#444');
 
       ctx.fillTextOptions(btn.text, X, Y, 'white', 20, 'sans-serif', 'center', 'middle');
     });
