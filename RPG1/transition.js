@@ -8,6 +8,8 @@ export function transition() {
   ctx.globalAlpha = transition.alpha;
   ctx.fillRectColor(Width / 2, Height / 2, Width, Height, 'black');
   if (1 < transition.alpha) {
+    WaitStart(math.random() * 3 + 1);
+    if (WaitRunnning()) return;
     transition.alpha = 0;
     State.currentScreen = State.nextScreen;
     State.nextScreen = null;
