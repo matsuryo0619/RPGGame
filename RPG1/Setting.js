@@ -4,6 +4,10 @@ export function setting() {
   // 初期化
   if (typeof setting.Screen === 'undefined') {
     setting.Screen = 'Name';
+    setting.SelectedX = 0;
+    setting.SelectedY = 0;
+    setting.InputName = '';
+    setting.prevKeys = {};
   }
 
   if (setting.Screen === 'Name') {
@@ -24,22 +28,60 @@ export function setting() {
       ['わ','', 'を', '', 'ん']
     ];
 
-    const btnWidth = 25;
-    const btnHeight = 25;
+    const btnWidth = 40;
+    const btnHeight = 40;
     const padding = 10;
+    const fontSize = btnHeight * 0.7;
 
-    const startX = Width / 2 - ((btnWidth + padding) * columns.length) / 2 + btnWidth / 2;
-    const startY = Height / 2 - ((btnHeight + padding) * 5) / 2 + btnHeight / 2;
+    const totalWidth = (btnWidth + padding) * columns.length - padding;
+    const totalHeight = (btnHeight + padding) * 5 - padding;
 
+    const startX = Width / 2 - totalWidth / 2 + btnWidth / 2;
+    const startY = Height / 2 - totalHeight / 2 + btnHeight / 2;
+
+    // --- 入力処理 ---
+    if (keys['ArrowRight'] && !setting.prevKeys['ArrowRight']) {
+      do {
+        setting.SelectedX = (setting.SelectedX + 1) % columns.length;
+      } while (!columns[setting.SelectedX][setting.SelectedY]);
+    }
+    if (keys['ArrowLeft'] && !setting.prevKeys['ArrowLeft']) {
+      do {
+        setting.SelectedX = (setting.SelectedX - 1 + columns.length) % columns.length;
+      } while (!columns[setting.SelectedX][setting.SelectedY]);
+    }
+    if (keys['ArrowDown'] && !setting.prevKeys['ArrowDown']) {
+      do {
+        setting.SelectedY = (setting.SelectedY + 1) % columns[setting.SelectedX].length;
+      } while (!columns[setting.SelectedX][setting.SelectedY]);
+    }
+    if (keys['ArrowUp'] && !setting.prevKeys['ArrowUp']) {
+      do {
+        setting.SelectedY = (setting.SelectedY - 1 + columns[setting.SelectedX].length) % columns[setting.SelectedX].length;
+      } while (!columns[setting.SelectedX][setting.SelectedY]);
+    }
+
+    if (keys[' '] && !setting.prevKeys[' ']) {
+      const char = columns[setting.SelectedX][setting.SelectedY];
+      if (char) setting.InputName += char;
+    }
+
+    setting.prevKeys = { ...keys };
+
+    // --- ボタン描画 ---
     columns.forEach((colArr, colIndex) => {
       colArr.forEach((char, rowIndex) => {
-        if (!char) return; // 空白マスはスキップ
+        if (!char) return;
         const x = startX + colIndex * (btnWidth + padding);
         const y = startY + rowIndex * (btnHeight + padding);
 
-        ctx.fillRoundedRect(x, y, btnWidth, btnHeight, 8, '#666');
-        ctx.fillTextOptions(char, x, y, 'white', 20, 'sans-serif', 'center', 'middle');
+        const isSelected = (colIndex === setting.SelectedX && rowIndex === setting.SelectedY);
+        ctx.fillRoundedRect(x, y, btnWidth, btnHeight, 8, isSelected ? '#cccccc' : '#666');
+        ctx.fillTextOptions(char, x, y, 'white', fontSize, 'sans-serif', 'center', 'middle');
       });
     });
+
+    // 入力中の名前表示
+    ctx.fillTextOptions(setting.InputName, Width / 2, Height / 2 - 250, 'white', 30, 'sans-serif', 'center', 'middle');
   }
 }
