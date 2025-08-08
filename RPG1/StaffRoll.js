@@ -39,7 +39,7 @@ export function Staffroll() {
 
   Staffroll.scrollY -= 1;
 
-  if (Staffroll.scrollY < -800) {
+  if (Staffroll.scrollY < -850) {
     State.ChangeScreen('title');
   }
 }
