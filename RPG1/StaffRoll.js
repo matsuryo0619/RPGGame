@@ -10,6 +10,7 @@ MatsuR
 
 ストーリー制作: 
 MatsuR
+MatsuR (兄)
 ScenarioSmith(ChatGPT)
 
 プログラム:
