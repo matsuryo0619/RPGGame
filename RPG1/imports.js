@@ -62,3 +62,13 @@ window.addEventListener('keydown', (e) => {
 window.addEventListener('keyup', (e) => {
   keys[e.code] = false;
 });
+
+let waitEndTime = 0;
+
+export function WaitStart(sec) {
+  waitEndTime = performance.now() / 1000 + sec;
+}
+
+export function WaitRunning() {
+  return performance.now() / 1000 < waitEndTime;
+}
