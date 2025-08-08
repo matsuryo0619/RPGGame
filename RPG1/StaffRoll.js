@@ -28,6 +28,11 @@ Claude
 使用ツール:
 GitHub
 GitHub Pages
+
+追記:
+ChatGPTのOpenAI社
+ClaudeのAnthropic社は､関係ありません
+MatsuRが使用しただけです｡
 `;
 
 export function Staffroll() {
@@ -39,7 +44,7 @@ export function Staffroll() {
 
   Staffroll.scrollY -= 1;
 
-  if (Staffroll.scrollY < -850) {
+  if (Staffroll.scrollY < -1000) {
     State.ChangeScreen('title');
   }
 }
