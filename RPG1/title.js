@@ -5,7 +5,7 @@ export function title() {
     title.BackHeight = 0;
   }
   
-  ctx.fillRectColor(Width / 2, Height / 2 + 50, 100, Math.min(title.BackHeight, 500), black);
+  ctx.fillRectColor(Width / 2, Height / 2 + 50, 100, Math.min(title.BackHeight, 500), 'black');
 
   title.BackHeight += 5;
 }
