@@ -6,7 +6,7 @@ export function transition() {
   }
   transition.alpha += 0.01;
   ctx.globalAlpha = transition.alpha;
-  ctx.fillRectColor(0, 0, canvas.width, canvas.height, 'black');
+  ctx.fillRectColor(Width / 2, Height / 2, Width, Height, 'black');
   if (1 < transition.alpha) {
     transition.alpha = 0;
     State.currentScreen = State.nextScreen;
