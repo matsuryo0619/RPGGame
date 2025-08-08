@@ -1,5 +1,6 @@
 import { ctx, canvas, State } from './imports.js';
 import { Staffroll } from './StaffRoll.js';
+import { transition } from './transition.js';
 
 function loop() {
   requestAnimationFrame(loop);
