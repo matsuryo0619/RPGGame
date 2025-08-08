@@ -25,8 +25,8 @@ export function setting() {
       ['ん','','','','']
     ];
 
-    const btnWidth = 50;
-    const btnHeight = 50;
+    const btnWidth = 25;
+    const btnHeight = 25;
     const padding = 10;
 
     const startX = Width / 2 - ((btnWidth + padding) * columns.length) / 2 + btnWidth / 2;
