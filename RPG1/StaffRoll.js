@@ -39,6 +39,6 @@ export function Staffroll() {
   Staffroll.scrollY -= 1;
 
   if (Staffroll.scrollY < -800) {
-    State.currentScreen = 'title';
+    State.ChangeScreen('title');
   }
 }
