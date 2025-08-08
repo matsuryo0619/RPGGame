@@ -2,6 +2,7 @@ import { ctx, canvas, State, Width, Height } from './imports.js';
 import { Staffroll } from './StaffRoll.js';
 import { transition } from './transition.js';
 import { title } from './title.js';
+import { setting } from './Setting.js';
 
 function loop() {
   requestAnimationFrame(loop);
@@ -18,6 +19,9 @@ function loop() {
       break;
     case 'title':
       title();
+      break;
+    case 'Setting':
+      setting();
       break;
   };
 }
