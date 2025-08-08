@@ -26,8 +26,21 @@ const btns = [
 
 let SelectedBtn = 0;
 
+let prevKeys = {};
+
 export function title() {
   if (!titleImage.complete) return;
+
+  if (keys['ArrowDown'] && !prevKeys['ArrowDown']) {
+    SelectedBtn++;
+    if (SelectedBtn >= btns.length) SelectedBtn = 0; // 下に行きすぎたら一番上へ
+  }
+  if (keys['ArrowUp'] && !prevKeys['ArrowUp']) {
+    SelectedBtn--;
+    if (SelectedBtn < 0) SelectedBtn = btns.length - 1; // 上に行きすぎたら一番下へ
+  }
+
+  prevKeys = { ...keys };
 
   ctx.drawImage(titleImage, Width / 2 - titleImage.width / 2, 100);
 
@@ -43,6 +56,7 @@ export function title() {
 
   if (174 <= title.BackHeight) {
     title.BackHeight = 175;
+    
     btns.forEach((btn, i) => {
       const X = Width / 2;
       const Y = Height / 2 + 50 + i * 50;
