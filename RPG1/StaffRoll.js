@@ -1,4 +1,4 @@
-import { ctx, canvas, State } from './imports.js'; // canvasもexportしておこう！
+import { ctx, canvas, State, keys } from './imports.js'; // canvasもexportしておこう！
 
 const Text = `
 スタッフロール
@@ -42,7 +42,7 @@ export function Staffroll() {
 
   ctx.fillTextOptions(Text, canvas.width / 2, Staffroll.scrollY, 'black', '25px', 'sans-serif', 'center', 'top');
 
-  Staffroll.scrollY -= 1;
+  Staffroll.scrollY -= 1 + keys[Space]  * 4;
 
   if (Staffroll.scrollY < -1000) {
     State.ChangeScreen('title');
