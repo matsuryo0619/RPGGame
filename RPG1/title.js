@@ -1,4 +1,4 @@
-import { ctx, canvas, State } from './imports.js';
+import { ctx, canvas, State, keys } from './imports.js';
 
 export function title() {
   
