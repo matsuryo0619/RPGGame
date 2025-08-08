@@ -1,3 +1,5 @@
+import { ctx, canvas, Width, Height, State, keys } from './imports.js';
+
 const titleImage = new Image();
 titleImage.src = 'https://i.imgur.com/e0qKLwV.png';
 
