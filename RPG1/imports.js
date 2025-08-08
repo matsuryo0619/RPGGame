@@ -40,4 +40,10 @@ export const ctx = canvas.getContext('2d');
 
 export const State = {
   currentScreen: 'StaffRoll'
+  nextScreen: null;
+
+  ChangeScreen(next) {
+    this.nextScreen = next;
+    this.currentScreen = transiction;
+  }
 };
