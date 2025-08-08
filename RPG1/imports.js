@@ -44,6 +44,7 @@ export const Height = canvas.height;
 export const State = {
   currentScreen: 'StaffRoll',
   nextScreen: null,
+  Name: null,
   Gold: 0,
   
 
