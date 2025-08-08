@@ -24,6 +24,8 @@ const btns = [
   }
 ];
 
+let SelectedBtn = 0;
+
 export function title() {
   if (!titleImage.complete) return;
 
@@ -45,8 +47,7 @@ export function title() {
       const X = Width / 2;
       const Y = Height / 2 + 50 + i * 50;
 
-      ctx.fillRoundedRect(X, Y, 150, 40, 10, '#444');
-
+      ctx.fillRoundedRect(X, Y, 150, 40, 10, SelectedBtn === i ? '#7d7d7d' : '#444');
       ctx.fillTextOptions(btn.text, X, Y, 'white', 20, 'sans-serif', 'center', 'middle');
     });
   }
