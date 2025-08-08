@@ -41,6 +41,7 @@ export const ctx = canvas.getContext('2d');
 export const State = {
   currentScreen: 'StaffRoll',
   nextScreen: null,
+  Alpha: 1,
 
   ChangeScreen(next) {
     this.nextScreen = next;
