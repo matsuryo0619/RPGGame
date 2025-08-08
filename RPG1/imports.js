@@ -39,8 +39,8 @@ canvas.style.height = `${size}px`;
 export const ctx = canvas.getContext('2d');
 
 export const State = {
-  currentScreen: 'StaffRoll'
-  nextScreen: null;
+  currentScreen: 'StaffRoll',
+  nextScreen: null,
 
   ChangeScreen(next) {
     this.nextScreen = next;
