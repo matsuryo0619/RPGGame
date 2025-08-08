@@ -1,6 +1,6 @@
 import { ctx, canvas, State } from './imports.js'
 
-function transition() {
+export function transition() {
   if (typeof transition.alpha !== 'number') {
     transition.alpha = 0;
   }
