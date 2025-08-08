@@ -39,6 +39,9 @@ export function title() {
     SelectedBtn--;
     if (SelectedBtn < 0) SelectedBtn = btns.length - 1; // 上に行きすぎたら一番下へ
   }
+  if (keys['Space'] && !prevKeys['Space']) {
+    btns[SelectedBtn].action();
+  }
 
   prevKeys = { ...keys };
 
