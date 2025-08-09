@@ -89,6 +89,7 @@ export function setting() {
     });
 
     // 入力中の名前表示
-    ctx.fillTextOptions(setting.InputName, Width / 2, Height / 2 - 175, 'white', 30, 'sans-serif', 'center', 'middle');
+    ctx.fillTextOptions(`名前を入力:
+    ${setting.InputName}`, Width / 2, Height / 2 - 175, 'white', 30, 'sans-serif', 'center', 'middle');
   }
 }
